@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Graphs</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+    </head>
+    <body>
+        <div id="container" style="width: 100%; height: 400px;"></div>
+        <div id="container2" style="width: 100%; height: 400px;"></div>
+    </body>
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        _categories = {{categories|safe}};
+        _values = {{sells|safe}};
+        var myChart = Highcharts.chart("container", {
+            chart: {
+                type: "line",
+            },
+            title: {
+                text: "Total Arrecadado",
+            },
+            xAxis: {
+                categories: _categories,
+            },
+            yAxis: {
+                title: {
+                    text: "R$",
+                },
+            },
+            series: [
+                {
+                    name: "R$",
+                    data: _values
+                },
+            ],
+        })
+        _categories2 = {{categories|safe}};
+        _values2 = {{receiptsitems|safe}};
+        var myChart = Highcharts.chart("container2", {
+            chart: {
+                type: "column",
+            },
+            title: {
+                text: "Total de Itens Vendidos",
+            },
+            xAxis: {
+                categories: _categories2,
+            },
+            yAxis: {
+                title: {
+                    text: "Itens vendidos",
+                },
+            },
+            series: [
+                {
+                    name: "itens",
+                    data: _values2
+                },
+            ],
+        })
+        
+    })
+</script>
